@@ -1,4 +1,4 @@
 # Table of contents
 
-* [Een eerste versie van Froggy Road](README.md)
-
+* [README](README.md)
+* [Introductie TIC-80](index.md)
