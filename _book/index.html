@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introductie TIC-80 · GitBook</title>
+        <title>Introductie gamedevelopment · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,6 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="lua.html" />
+    
     
     <link rel="prev" href="./" />
     
@@ -105,7 +107,46 @@
                 <a href="./">
             
                     
-                    Introductie TIC-80
+                    Introductie gamedevelopment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="lua.html">
+            
+                <a href="lua.html">
+            
+                    
+                    De programmeertaal LUA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="tic-80.html">
+            
+                <a href="tic-80.html">
+            
+                    
+                    TIC-80
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="spiekbriefje.html">
+            
+                <a href="spiekbriefje.html">
+            
+                    
+                    Spiekbriefje
             
                 </a>
             
@@ -143,7 +184,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introductie TIC-80</a>
+        <a href="." >Introductie gamedevelopment</a>
     </h1>
 </div>
 
@@ -158,421 +199,55 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="een-eerste-versie-van-froggy-road">Een eerste versie van Froggy Road</h1>
-<p>Froggy Road</p>
+                                <h1 id="introductie-gamedevelopment">Introductie gamedevelopment</h1>
 <p><img src=".gitbook/assets/0.png" alt=""></p>
 <p>Eerst een kort stukje uitleg voor we beginnen. Je hoeft dit niet allemaal precies te snappen, maar lees het een keer door.</p>
-<p>Computer graphics en Computer Games</p>
+<h1 id="computer-graphics-en-computer-games">Computer graphics en Computer Games</h1>
 <p>Plaatjes op de computer bestaan uit kleine beeldpunten, die we &#x201C;pixels&#x201D; noemen. Oude computers konden nog niet zoveel pixels tegelijk tekenen, dus waren de pixels heel groot en kon je ze goed zien. Daarom heten plaatjes in de stijl van oude computerspelletjes ook wel &#x201C;pixel art&#x201D;. Als je op de computer een plaatje wilt tekenen, ben je dus al die pixels een kleurtje aan het geven. Meestal doe je dat door plaatjes die je in je geheugen hebt op het scherm te &#x201C;stempelen&#x201D; op verschillende plaatsen.<img src=".gitbook/assets/1.png" alt=""></p>
 <h2 id="sprites">Sprites</h2>
 <p>Het geheugen van de computer waar de plaatjes worden opgeslagen is opgedeeld in kleine vakjes, van 8 bij 8 pixels groot. Je kunt deze vakjes met code op het scherm tekenen, in groepjes van 8x8, 16x16 of 32x32. Onze kikker is bijvoorbeeld 16x16 pixels groot. Elk plaatje wat je zo op het scherm tekent heet een &#x201C;sprite&#x201D;. In het plaatje hieronder kun je zien hoe alle sprites naast elkaar in het geheugen zitten. Elke sprite heeft een nummer, en het is zelf de bedoeling dat je bijhoudt hoeveel 8x8 vakjes er bij elke sprite horen.</p>
-<p>Het scherm van de TIC-80 is 240 pixels breed en 134 pixels hoog. Dat is dus 30 vakjes van 8x8 breed en 17 hoog. Niet zo heel veel, maar genoeg om een spelletje mee te maken!<img src=".gitbook/assets/2.png" alt=""></p>
+<p><img src=".gitbook/assets/2.png" alt=""></p>
+<p>Het scherm van de TIC-80 is 240 pixels breed en 134 pixels hoog. Dat is dus 30 vakjes van 8x8 breed en 17 hoog. Niet zo heel veel, maar genoeg om een spelletje mee te maken!!</p>
 <h2 id="objecten">Objecten</h2>
-<p>Als we plaatjes op het scherm willen tekenen, moeten we<img src=".gitbook/assets/3.png" alt=""> weten op welke plaats we ze moeten tekenen. We houden in het geheugen van de computer alle &#x201C;dingen&#x201D; bij die belangrijk zijn voor ons spelletje (bijvoorbeeld: een kikker of een auto), zodat we die vervolgens op de juiste plaats kunnen tekenen. Vanaf nu gaan we de &#x201C;dingen&#x201D; die we gaan laten bewegen of waar je tegenaan kan lopen &#x201C;objecten&#x201D;.</p>
+<p><img src=".gitbook/assets/3.png" alt="">
+Als we plaatjes op het scherm willen tekenen, moeten we weten op welke plaats we ze moeten tekenen. We houden in het geheugen van de computer alle &#x201C;dingen&#x201D; bij die belangrijk zijn voor ons spelletje (bijvoorbeeld: een kikker of een auto), zodat we die vervolgens op de juiste plaats kunnen tekenen. Vanaf nu gaan we de &#x201C;dingen&#x201D; die we gaan laten bewegen of waar je tegenaan kan lopen &#x201C;objecten&#x201D;.</p>
 <p>Alle objecten hebben een X en een Y positie op het scherm. Die positie houden we bij in <strong>variabelen,</strong> bijvoorbeeld <strong>x</strong> en <strong>y</strong>.</p>
-<p>kikker_x = 112</p>
-<p>kikker_y = 112</p>
+<pre><code class="lang-lua">kikker_x = <span class="hljs-number">112</span>
+
+kikker_y = <span class="hljs-number">112</span>
+</code></pre>
 <p><strong>LET OP!</strong> De Y-as loopt andersom dan je van wiskunde gewend bent. Op de computer zit Y=0 bovenaan het scherm, en worden de getallen lager als je naar beneden gaat.</p>
 <p>Je kunt variabelen ook in een groepje bij elkaar stoppen, in een <strong>objectvariabele</strong>. Dat ziet er zo uit:</p>
-<p>kikker = { x=112, y=112 }</p>
+<pre><code class="lang-lua">kikker = { x=<span class="hljs-number">112</span>, y=<span class="hljs-number">112</span> }
+</code></pre>
 <p>Je kunt de variabelen in een object precies hetzelfde gebruiken als gewone variabelen, door een punt ( <strong>.</strong> ) te typen tussen de naam van het object en de naam van de variabele. Bijvoorbeeld:</p>
-<p>kikker.y = kikker.y + 3</p>
+<pre><code class="lang-lua">kikker.y = kikker.y + <span class="hljs-number">3</span>
+</code></pre>
 <p>We gaan van de kikker niet alleen bij houden waar hij getekend moet worden, maar ook hoe groot hij is (hoe breed en hoe hoog). Dat gaat straks van pas komen als we moeten kijken of de kikker en de auto met elkaar botsen. De breedte slaan we op in de variabele <strong>w</strong> (van het Engelse &#x201C;width&#x201D;) en de hoogte in de variabele <strong>h</strong> (van het Engels &#x201C;height&#x201D;).</p>
 <p>Dus de hele kikker ziet er in ons geheugen zo uit:</p>
-<p>kikker = { x=112, y=112, w=16, h=16 }</p>
+<pre><code class="lang-lua">kikker = { x=<span class="hljs-number">112</span>, y=<span class="hljs-number">112</span>, w=<span class="hljs-number">16</span>, h=<span class="hljs-number">16</span> }
+</code></pre>
 <h2 id="de-game-loop">De &#x201C;Game Loop&#x201D;</h2>
-<p>Alle spellen bestaan uit twee stappen die na elkaar steeds maar weer in een lus uitgevoerd worden, namelijk <strong>rekenen</strong> en <strong>tekenen</strong>.<img src=".gitbook/assets/4.png" alt=""></p>
+<p><img src=".gitbook/assets/4 2.png" alt=""></p>
+<p>Alle spellen bestaan uit twee stappen die na elkaar steeds maar weer in een lus uitgevoerd worden, namelijk <strong>rekenen</strong> en <strong>tekenen</strong>.</p>
 <p>In de stap <strong>rekenen</strong> kijk je naar de invoer van de speler, en laat je de computervijanden bewegen. Dit doe je allemaal door variabelen in je geheugen te veranderen (bijvoorbeeld: de positie van de kikker of van de auto).</p>
 <p>In de tweede stap, <strong>rekenen</strong>, ga je de variabelen gebruiken om de kikker en de auto op de juiste plek op het scherm te tekenen, zodat de speler kan zien wat er allemaal gebeurd is.</p>
 <p>Je moet dus een variabele hebben voor alles wat je wilt kunnen veranderen, zodat je de waarde kan aanpassen in <strong>rekenen</strong> en het resultaat kunt laten zien in <strong>tekenen</strong>. Positie van de kikker? Daar heb je een variabele voor. Of de kikker levend of dood getekend moet worden? Ook een variabele. Of het spel afgelopen is of nog loopt? Nog een variabele. De meeste variabelen die je nodig hebt zitten al in het beginbestand wat je gekregen hebt, maar sommige zul je er later zelf bij moeten maken.</p>
 <p>In de code van de TIC-80 ziet de verdeling in <strong>rekenen</strong> en <strong>tekenen</strong> er als volgt uit:</p>
-<p>function TIC()</p>
-<p> rekenen()</p>
-<p> tekenen()</p>
-<p>end</p>
-<p>function rekenen()</p>
-<p> &#x2014;- Hier wordt gerekend</p>
-<p>end</p>
-<p>function tekenen()</p>
-<p> &#x2014;- Hier wordt getekend</p>
-<p>end</p>
+<pre><code class="lang-lua"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">TIC</span><span class="hljs-params">()</span></span>
+ rekenen()
+ tekenen()
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">rekenen</span><span class="hljs-params">()</span></span>
+ <span class="hljs-comment">--- Hier wordt gerekend</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tekenen</span><span class="hljs-params">()</span></span>
+ <span class="hljs-comment">--- Hier wordt getekend</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
 <p>De functie <strong>TIC()</strong> wordt automatisch door de TIC-80 computer in een oneindige lus aangeroepen. Daarna roepen we zelf <strong>rekenen()</strong> en vervolgens <strong>tekenen()</strong> aan, waar het echte werk gebeurt.</p>
-<h2 id="lua">Lua</h2>
-<p>De TIC-80 wordt geprogrammeerd in Lua. Dat is een programmeertaal net als Python of JavaScript. Hij ziet er misschien net iets anders uit dan je gewend bent van andere programmeertalen, maar hij werkt eigenlijk precies hetzelfde. Je hebt ook variabelen, een <strong>if</strong> en <strong>functies</strong>, en een manier om commentaar te schrijven.</p>
-<p>Commentaar</p>
-<p>Alles wat achter twee streepjes staat, hoort niet bij je programma. Dat heet &#x201C;commentaar&#x201D;, en kun je gebruiken om aan jezelf en aan anderen uit te leggen hoe je programma werkt. Bijvoorbeeld:</p>
-<p> &#x2014;- Dit programma werkt supergoed!</p>
-<p>Functies aanroepen</p>
-<p>Functies zijn opdrachten die je aan de computer kan geven om iets te doen, of vragen die je aan de computer kunt stellen. Zoals bijvoorbeeld: &#x201C;teken deze sprite op deze op deze plek&#x201D; (met de functie <strong>spr()</strong>) of &#x201C;heeft de speler op een knop gedrukt?&#x201D; (met de functie <strong>btnp()</strong>).</p>
-<p>Als je een functie wilt aanroepen (dus een opdracht wilt geven), schrijf je de naam van de functie en daarachter haakjes. Meestal heeft een functie <em>parameters,</em> die schrijf je dan tussen de haakjes. Bijvoorbeeld:</p>
-<p>print(&#x201C;Hallo&#x201D;, 0, 0)</p>
-<p>Op de laatste bladzijde van dit boekje vind je een lijst van alle functies die je nodig hebt voor deze workshop.</p>
-<p>Variabelen</p>
-<p>Een variabele is een manier om een naam aan een waarde te koppelen. Variabelen kun je veranderen en ook weer uitlezen, bijvoorbeeld als je een functie aanroept:</p>
-<p>regel = 5</p>
-<p>regel = regel + 10</p>
-<p>print(&#x201C;Dit staat op regel 15&#x201D;, 0, regel)</p>
-<p>if/then</p>
-<p>Een <strong>if</strong> is een manier om een stukje code alleen uit te voeren in speciale gevallen. Bijvoorbeeld als de speler op een knop drukt, of als een variabele groter is dan een bepaalde drempelwaarde. Een <strong>if</strong> schrijf je als <strong>if &#x2026; then &#x2026; end</strong>.</p>
-<p>Als je het volgende stukje code steeds opnieuw uitvoert heeft <strong>teller</strong> de waardes 1, 2, 3, 1, 2, 3, 1, 2, 3&#x2026; enzovoorts:</p>
-<p>teller = teller + 1</p>
-<p>if teller &gt; 3 then</p>
-<p> teller = 1</p>
-<p>end</p>
-<p>Gewapend met deze kennis ben je klaar om te beginnen!</p>
-<p>Beginnen met de TIC-80 computer</p>
-<p>Als je de TIC-80 net hebt opgestart begin je in een scherm waar je begint met commando&#x2019;s typen. Hier kun je je spellen laden en opslaan en starten. Als het goed is heb je bij deze workshop een bestand gekregen wat <strong>workshop.tic</strong> heet.</p>
-<p>Typ eerst <strong>folders</strong> (en druk op ENTER) om het mapje waar je <strong>.tic</strong> bestanden opslaat te openen. Kopi&#xEB;er <strong>workshop.tic</strong> daar naartoe.</p>
-<p>Vervolgens typ je <strong>load workshop</strong> om het bestand te laden.<img src=".gitbook/assets/5.png" alt=""></p>
-<p>Om het spelletje te starten typ je <strong>run</strong>, of je drukt op <strong>Ctrl-R</strong> of &#x2318;<strong>-R</strong>.</p>
-<p>Als je op <strong>ESC</strong> drukt ga je naar de code editor waar je kunt programmeren, en met nog een keer <strong>ESC</strong> ga je weer terug.</p>
-<p><img src=".gitbook/assets/6.png" alt=""></p>
-<p>Als je je spel wilt bewaren, typ je <strong>save</strong>.</p>
-<ol>
-<li>Laat de kikker bewegen<img src=".gitbook/assets/7.png" alt=""></li>
-</ol>
-<p>Als we beginnen zien we een kikker op het scherm, maar de kikker kan nog niet bewegen.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">&#x1F449;</th>
-<th style="text-align:left">Zorg dat als je op PIJLTJE OMHOOG op je toetsenbord drukt, de kikker OMHOOG beweegt.</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
-<p>Ergens in de functie <strong>rekenen()</strong> kijken we met een <strong>if</strong> of er een knop ingedrukt wordt (met de functie <strong>btnp()</strong>). Als dat zo is, dan moeten we iets gaan doen om de positie van de kikker te veranderen. Wat moet hier komen?</p>
-<p>if btnp(0) then</p>
-<p> -- OPDRACHT 1</p>
-<p> -- Wat moet hier komen?</p>
-<p>end</p>
-<p>Denk na over de grootte van de stappen. 8 of 16 zijn getallen die ik goed vind werken, maar je mag natuurlijk kiezen wat je zelf wil!</p>
-<p><table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x1F4A1;</th>
-      <th style="text-align:left">
-        <p><b>Tip</b>
-        </p>
-        <p>Geef <b>kikker.y</b> een nieuwe waarde, door een getal op te tellen of af
-          te trekken van de oude <b>kikker.y</b>. Denk goed na of de Y coordinaat
-          lager of hoger moet worden!</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table><table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x1F9E0;</th>
-      <th style="text-align:left">
-        <p><b>Extra</b>
-        </p>
-        <p>Als je de overkant haalt zie je een tekst. Pas de tekst aan om jezelf
-          eens passend te feliciteren.</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table><table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x1F9E0;</th>
-      <th style="text-align:left">
-        <p><b>Extra</b>
-        </p>
-        <p>Kun je de kikker ook weer naar beneden laten bewegen als je op PIJLTJE
-          OMLAAG duwt?</p>
-        <p>(tip: kijk op het laatste blad naar de lijst van functies)</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>1. Laat de kikker bewegen (uitleg)</p>
-<p>Omdat de Y as naar beneden loopt, moet de waarde van <strong>kikker.y</strong> <em>lager</em> worden om de kikker <em>omhoog</em> te laten lopen. Ik vind stapjes van 8 pixels goed werken:</p>
-<p>if btnp(0) then</p>
-<p> kikker.y = kikker.y - 8</p>
-<p>end</p>
-<p>Als je ook teruguit wilt kunnen lopen, ze je dit eronder:</p>
-<p>if btnp(1) then</p>
-<p> kikker.y = kikker.y + 8</p>
-<p>end</p>
-<p><strong>btnp(1)</strong> omdat 1 het nummer is van de knop PIJLTJE OMLAAG, en <strong>kikker.y + 8</strong> omdat <strong>+</strong> ervoor zorgt dat de kikker naar beneden beweegt.</p>
-<ol>
-<li>Achtergrond toevoegen<img src=".gitbook/assets/8.png" alt=""></li>
-</ol>
-<p>De omgeving van de kikker is nu een beetje saai. Laten we de kikker eens iets geven om naartoe te rennen. Bijvoorbeeld: een vijvertje om lekker in te zwemmen!</p>
-<p>Als je in de editor op MAP EDITOR (F3) klikt, kom je in een scherm waar je de achtergrond kan tekenen. De kaart bestaat uit een heleboel tegels van 8x8 pixels.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">&#x1F449;</th>
-<th style="text-align:left">Zorg dat er een achtergrond onder de kikker getekend wordt.</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
-<p>Je kunt wat je getekend hebt in de MAP EDITOR in code op het scherm tekenen door op de juiste plek een aanroep naar de <strong>map()</strong> functie neer te zetten.</p>
-<p>Waar moet die functie komen denk je? In <strong>rekenen()</strong> of in <strong>tekenen()</strong>?</p>
-<p>Zoek de <strong>map()</strong> functie op op het spiekbriefje (achterin) en kijk goed welke parameters die functie nodig heeft, en in welke volgorde.</p>
-<p><table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x1F4A1;</th>
-      <th style="text-align:left">
-        <p><b>Tip</b>
-        </p>
-        <p>Als je het hele scherm wilt vullen, deel je het aantal pixels in het scherm
-          door de grootte van een tegel om het aantal tegels uit te rekenen.</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table><table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x1F9E0;</th>
-      <th style="text-align:left">
-        <p><b>Extra</b>
-        </p>
-        <p>Teken vooral een andere/leukere achtergrond als je wilt. Door op SHIFT
-          te drukken kun je andere tegels kiezen om mee te tekenen.</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>2. Achtergrond toevoegen (uitleg)</p>
-<p>Je roept <strong>map()</strong> als volgt aan om het hele scherm te vullen met de achtergrond:</p>
-<p>map(0, 0, 30, 17)</p>
-<p>0, 0 is omdat je vanaf de eerste tegel op de kaart wilt beginnen met tekenen (positie in tegelcoordinaten).</p>
-<p>30, 17 zijn het aantal tegels in de breedte en in de hoogte. Het scherm is 240 pixels breed en 136 pixels hoog, dus 240 pixels breed gedeeld door 8 pixels per tegel = 30 tegels, en 136 pixels / 8 pixels per tegel = 17 tegels.</p>
-<p>Het is belangrijk in welke volgorde je alle tekenopdrachten geeft, omdat de latere over de eerste heentekenen. De <strong>map()</strong> moet dus v&#xF3;&#xF3;r de <strong>spr()</strong> waarmee de kikker getekend wordt, anders zie je de kikker niet meer!</p>
-<p><img src=".gitbook/assets/9.png" alt=""></p>
-<ol>
-<li>Het eerste obstakel</li>
-</ol>
-<p>Het spel is nu natuurlijk wel erg makkelijk, je kan z&#xF3; naar de overkant lopen! Tijd om een obstakel toe te voegen.</p>
-<p>Als je in de editor op SPRITE EDITOR (F2) klikt, zie je dat we ook plaatjes van auto&#x2019;s hebben, maar in het spel is er nog geen auto te bekennen.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">&#x1F449;</th>
-<th style="text-align:left">Zorg dat de auto op het scherm getekend wordt.</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
-<p>Net als voor de kikker, hebben we ook al een object voor de auto (het heet, toepasselijk genoeg, <strong>auto</strong>!). Net als bij de kikker moet de auto wel op het scherm getekend worden. Dat doe je met de <strong>spr()</strong> functie. Je moet de <strong>spr()</strong> functie vertellen welke sprite (of sprites) hij moet tekenen, en waar. Alle sprites hebben een nummer, dat je kan vinden door er op te klikken in de SPRITE EDITOR (staat achter de # links).</p>
-<p>Zoek op hoe de <strong>spr()</strong> functie werkt (spiek maar lekker bij hoe de kikker getekend wordt), en teken de auto ook op het scherm. Let op het spritenummer en de afmetingen van de auto.</p>
-<p><table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x1F4A1;</th>
-      <th style="text-align:left">
-        <p><b>Tip</b>
-        </p>
-        <p>Om bij het aantal tegels te komen moet je (helaas!) een heleboel parameters
-          opgeven die we eigenlijk helemaal niet nodig hebben. Daar moet je dan maar
-          even getallen invullen die niets veranderen.</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table><table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x1F9E0;</th>
-      <th style="text-align:left">
-        <p><b>Extra</b>
-        </p>
-        <p>Als je het spel te makkelijk vindt, zoek dan op waar de snelheid van de
-          auto geregeld wordt en laat hem sneller rijden.</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>3. Het eerste obstakel (uitleg)</p>
-<p>De <strong>spr</strong> aanroep is erg lang, en een heleboel parameters doen er niet toe. Hij ziet er zo uit:</p>
-<p>spr(33, auto.x, auto.y, 1,1,0,0,4,2)</p>
-<p>Dit is wat ze allemaal betekenen:</p>
-<p>id=33 &#x2014; is het spritenummer van de rode auto</p>
-<p>x,y=auto.x, auto.y &#x2014; zijn de pixelcoordinaten van de auto</p>
-<p>colorkey=1 &#x2014; de eerste 1 zorgt ervoor dat de kleur met nummer 1 doorzichtig getekend wordt. Kijk maar eens wat er gebeurt als je dit verandert in 6.</p>
-<p>scale=1 &#x2014; de tweede 1 zorgt ervoor dat de tekening op normale grootte wordt getekend. Kijk maar eens wat er gebeurt als je dit verandert in 2.</p>
-<p>flip=0 &#x2014; we willen de tekening niet spiegelen</p>
-<p>rotate=0 &#x2014; we willen de tekening niet draaien</p>
-<p>w,h=4,2 &#x2014; de auto is 4 tegels breed en 2 tegels hoog</p>
-<ol>
-<li>Botsen (&#x201C;collission detection&#x201D;)<img src=".gitbook/assets/10.png" alt=""></li>
-</ol>
-<p>We hebben een kikker, we hebben een auto&#x2026; maar er gebeurt niets als de auto de kikker raakt. Dat is een beetje saai zo!</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">&#x1F449;</th>
-<th style="text-align:left">Zorg dat je het spel verliest als je door de auto geraakt wordt.</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
-<p>TIC-80 weet niks van wat dingen voorstellen. Het enige wat de computer weet is dat jij wat plaatjes op een bepaalde plaats op het scherm getekend hebt, maar niet dat die dingen een speler of een obstakel zijn. Wat jij als programmeur dus moet doen is bijhouden waar elk object op het scherm staat en hoe groot het is, en met een berekening kijken of ze elkaar aanraken.</p>
-<p>De code om te kijken of de kikker met de auto gebotst is staat al in het programma:</p>
-<p>-- Zijn we gebotst met de auto?</p>
-<p>if bots(kikker, auto) then</p>
-<p> kikker_kan_bewegen = false</p>
-<p>end</p>
-<p>Maar de functie <strong>bots()</strong> is nog niet ingevuld:</p>
-<p>-- Geeft terug of rechthoeken r en s elkaar aanraken</p>
-<p>function bots(r, s)</p>
-<p> return false</p>
-<p>end</p>
-<p>Deze functie gaan we invullen.</p>
-<p><table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x1F4A1;</th>
-      <th style="text-align:left">
-        <p><b>Tip</b>
-        </p>
-        <p>Dit stukje is best wel lastig! Als je het leuk vindt om dit uit te puzzelen,
-          dan mag dat. Maar je mag de functie <b>bots()</b> ook behandelen als een
-          balpen: iemand anders heeft hem al voor je gemaakt en jij gebruikt hem
-          gewoon. Als je dat wilt doen, kun je hem gewoon overtypen van de volgende
-          bladzijde.</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>Er zijn verschillende manieren om collission detection te doen. Wat wij gaan doen is de kikker en auto behandelen als rechthoeken. Die rechthoeken noemen we <strong>r</strong> en <strong>s</strong>, en ze hebben allebei een (x, y) als linkerbovenhoek en een breedte (w) en hoogte (h). De vraag is, overlappen de rechthoeken elkaar?</p>
-<p><img src=".gitbook/assets/11.png" alt=""><img src=".gitbook/assets/12.png" alt=""></p>
-<p>Dit schrijven we op als een stel vergelijkingen tussen de zijdes van <strong>r</strong> en <strong>s</strong>. De functie komt er ongeveer zo uit te zien: (maar niet precies zo, want dit antwoord is fout!)</p>
-<p>function bots(r, s)</p>
-<p> return r.x + r.w &gt; s.x</p>
-<p> and r.y + r.h &lt; s.y</p>
-<p> and ...</p>
-<p>end</p>
-<p>Teken op een kladblaadje een aantal rechthoeken in verschillende posities ten opzichte van elkaar (links, rechts, boven onder, wel of niet overlappend) om een gevoel te krijgen voor de gevallen waar je aan moet denken.</p>
-<p>Tip: er zijn meerdere goede antwoorden, &#xE9;&#xE9;n ervan werkt zo:</p>
-<p>function bots(r, s)</p>
-<p> return linkerkant R is links van rechterkant S</p>
-<p> and bovenkant R is boven onderkant S</p>
-<p> and rechterkant R is rechts van linkerkant S</p>
-<p> and onderkant R is onder bovenkant S</p>
-<p>end</p>
-<p><table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x1F9E0;</th>
-      <th style="text-align:left">
-        <p><b>Extra</b>
-        </p>
-        <p>Zorg dat je goed kan zien dat de kikker overreden is. Dit doe je door
-          een ander plaatje te gebruiken als de kikker getekend wordt. Je hebt dus
-          een variabele nodig om bij te houden welk plaatje gebruikt moet worden.</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>4. Botsen (Uitleg)</p>
-<p>Laten we eens kijken naar de hint van wat we moeten berekenen:</p>
-<p>linkerkant R is links van rechterkant S</p>
-<p>&#x201C;is links van&#x201D; betekent &#x201C;kleiner dan&#x201D; &lt;</p>
-<p>linkerkant R &lt; rechterkant S</p>
-<p>&#x201C;linkerkant R&#x201D; is r.x</p>
-<p>r.x &lt; rechterkant S</p>
-<p>&#x201C;rechterkant S&#x201D; is s.x + s.w</p>
-<p>r.x &lt; s.x + s.w</p>
-<p>Als we dat voor alle zijdes doen, komt <strong>bots()</strong> er z&#xF3; uit te zien:</p>
-<p>function bots(r, s)</p>
-<p> return r.x &lt; s.x + s.w</p>
-<p> and r.y &lt; s.y + s.h</p>
-<p> and r.x + r.w &gt; s.x</p>
-<p> and r.y + r.h &gt; s.y</p>
-<p>end</p>
-<ol>
-<li>Meer auto&#x2019;s<img src=".gitbook/assets/13.png" alt=""></li>
-</ol>
-<p>We kunnen nu in ieder geval botsen, maar het spel is nog steeds wel een beetje makkelijk met maar &#xE9;&#xE9;n auto.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">&#x1F449;</th>
-<th style="text-align:left">Voeg een tweede auto toe (liefst op de andere rijbaan, maar overal mag). Zorg natuurlijk ook dat je door die auto geraakt kan worden.</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
-<p>De makkelijkste manier om een tweede auto toe te voegen is om alles te kopi&#xEB;ren wat er geschreven is voor de eerste auto, en dat dan aan te passen. Om te beginnen heb je een nieuwe variabele nodig, en daarna kopieer je de andere regels ook.</p>
-<p><table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x1F9E0;</th>
-      <th style="text-align:left">
-        <p><b>Extra</b>
-        </p>
-        <p>Misschien is het nog leuker als de twee auto&#x2019;s niet even snel rijden.
-          Probeer dat eens!</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table><table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x1F9E0;</th>
-      <th style="text-align:left">
-        <p><b>N&#xF3;g meer auto&#x2019;s (geavanceerd)</b>
-        </p>
-        <p>Twee auto&#x2019;s is leuk, maar als je steeds meer auto&#x2019;s toe
-          wilt voegen wordt het wel erg veel werk om steeds meer variabelen toe te
-          voegen. Als je een <b>lijst</b> van objecten bijhoudt, kun je zoveel auto&#x2019;s
-          als je wilt hebben zonder dat het meer code kost.</p>
-        <p>Lijsten in Lua werken zo:</p>
-        <p>-- Nieuwe lege lijst voor auto&apos;s</p>
-        <p>autos = {}</p>
-        <p>-- Voeg auto&apos;s toe aan de lijst</p>
-        <p>table.insert(autos, {x=112, y=83, w=32, h=16})</p>
-        <p>table.insert(autos, {x=0, y=15, w=32, h=16})</p>
-        <p>-- Doe iets met iedere auto</p>
-        <p>for i, auto in pairs(autos)</p>
-        <p>spr(1, auto.x, auto.y, ... )</p>
-        <p>end</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>Spiekbriefje</p>
-<p>Je hoeft heus niet alles uit je hoofd te leren. Op dit blad kun je opzoeken hoe alle details ook weer werken.</p>
-<h2 id="functies">Functies</h2>
-<p>De TIC-80 heeft een aantal ingebouwde functies die je kunt gebruiken om spelletjes mee te maken. Een lijst van alle functies kun je vinden op <a href="https://github.com/nesbox/TIC-80/wiki" target="_blank">https://github.com/nesbox/TIC-80/wiki</a>.</p>
-<p><strong>cls(color)</strong> &#x2014; Vul het hele scherm met het kleurnummer in <strong>color</strong> (kleurnummers tussen 0 en 15).</p>
-<p><strong>map(x, y, w, h, sx, sy)</strong> &#x2014; Teken de tegels van de kaart op het scherm. Begin te tekenen bij tegel <strong>(x, y)</strong> op de kaart, en teken <strong>w</strong> tegels breed en <strong>h</strong> tegels hoog. <strong>sx</strong> en <strong>sy</strong> mag je weglaten. Als ze gegeven zijn, zijn dat pixelco&#xF6;rdinaten op het scherm om te tekenen.</p>
-<p><strong>spr(id, x, y, colorkey, scale, flip, rotate, w, h)</strong> &#x2014; Teken de sprite met nummer <strong>id</strong> op het scherm op <strong>(x, y)</strong>. De kleur met nummer <strong>colorkey</strong> wordt doorzichtig getekend. <strong>scale</strong>, <strong>flip</strong> en <strong>rotate</strong> veranderen hoe de sprite getekend wordt op het scherm. <strong>w</strong> en <strong>h</strong> geven aan hoeveel vakjes naast elkaar en boven elkaar getekend moeten worden.</p>
-<p><strong>btn(id)/btnp(id)</strong> &#x2014; Of er een knop ingedrukt is. Met <strong>btn()</strong> kun je de knop vasthouden, met <strong>btnp()</strong> moet je hem eerst loslaten. Knoppen hebben nummers:</p>
-<p>0 = omhoog, 1 = omlaag, 2 = links, 3 = rechts</p>
-<p>4 = Z, 5 = X, 6 = A, 7 = S</p>
-<p><strong>print(text, x, y, [color])</strong> &#x2014; Print de tekst op de aangegeven plek.</p>
-<p>(Een volledige lijst is te vinden op <a href="https://github.com/nesbox/TIC-80/wiki" target="_blank">https://github.com/nesbox/TIC-80/wiki</a>)</p>
 
                                 
                                 </section>
@@ -600,10 +275,14 @@
 
             
                 
-                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: README">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: README">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="lua.html" class="navigation navigation-next " aria-label="Next page: De programmeertaal LUA">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -612,7 +291,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introductie TIC-80","level":"1.2","depth":1,"previous":{"title":"README","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"index.md","mtime":"2019-12-20T14:26:58.454Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-12-20T14:28:29.152Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introductie gamedevelopment","level":"1.2","depth":1,"next":{"title":"De programmeertaal LUA","level":"1.3","depth":1,"path":"lua.md","ref":"lua.md","articles":[]},"previous":{"title":"README","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"index.md","mtime":"2019-12-20T15:24:59.783Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-12-20T14:34:53.954Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
